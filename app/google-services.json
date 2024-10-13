@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "541094121430",
+    "firebase_url": "https://fir-auth-fab85-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "fir-auth-fab85",
+    "storage_bucket": "fir-auth-fab85.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:541094121430:android:b8931b7326e0c721e49e77",
+        "android_client_info": {
+          "package_name": "com.example.qsub"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkAmLEmdHulnWSoBhl_oFzg5rGWHHCCcY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
