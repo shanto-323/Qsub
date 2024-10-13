@@ -1,4 +1,4 @@
-package com.example.qsub.ui.theme
+package com.example.qsub.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build
