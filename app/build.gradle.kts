@@ -70,6 +70,7 @@ dependencies {
 
   //Material3
   implementation("androidx.compose.material3:material3:1.2.1")
+  implementation("androidx.compose.material:material-icons-extended:1.7.3")
 
   //Dagger Hilt
   kapt("androidx.hilt:hilt-compiler:1.2.0")
@@ -93,4 +94,6 @@ dependencies {
   implementation("androidx.paging:paging-runtime:$pagingVersion")
   testImplementation("androidx.paging:paging-common:$pagingVersion")
   implementation("androidx.paging:paging-compose:3.3.1")
+
+  implementation (libs.accompanist.navigation.animation)
 }

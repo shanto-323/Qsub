@@ -11,10 +11,10 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
 class AuthRepositoryImpl @Inject constructor(
   private val auth: FirebaseAuth
 ) : AuthRepository {
@@ -42,12 +42,13 @@ class AuthRepositoryImpl @Inject constructor(
 
   override suspend fun reloadUser(): InResponse =
     try {
+      auth.currentUser?.reload()?.await()
       Response.Success(true)
     } catch (e: Exception) {
       Response.Error(e)
     }
 
-  override suspend fun getAuthState(viewmodelScope: CoroutineScope) = callbackFlow {
+  override fun getAuthState(viewmodelScope: CoroutineScope) = callbackFlow {
     val authListener = FirebaseAuth.AuthStateListener { auth ->
       trySend(auth.currentUser == null)
     }
@@ -55,5 +56,5 @@ class AuthRepositoryImpl @Inject constructor(
     awaitClose {
       auth.removeAuthStateListener(authListener)
     }
-  }.stateIn(viewmodelScope, SharingStarted.WhileSubscribed(),auth.currentUser == null)
+  }.stateIn(viewmodelScope, SharingStarted.WhileSubscribed(), auth.currentUser == null)
 }

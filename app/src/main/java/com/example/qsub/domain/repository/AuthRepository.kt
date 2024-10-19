@@ -19,5 +19,5 @@ interface AuthRepository {
 
   suspend fun reloadUser():InResponse
 
-  suspend fun getAuthState(viewmodelScope: CoroutineScope): StateFlow<Boolean>
+ fun getAuthState(viewmodelScope: CoroutineScope): StateFlow<Boolean>
 }
