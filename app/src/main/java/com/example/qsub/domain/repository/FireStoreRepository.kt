@@ -14,4 +14,6 @@ interface FireStoreRepository {
 
   fun getData(id:String) : Flow<List<DataModel>>
 
+  fun getAllUserData() : Flow<List<DataModel>>
+
 }

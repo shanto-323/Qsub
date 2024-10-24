@@ -9,6 +9,7 @@ import com.example.qsub.domain.model.DataModel
 import com.example.qsub.domain.model.Response
 import com.example.qsub.domain.repository.AuthRepository
 import com.example.qsub.domain.repository.FireStoreRepository
+import com.example.qsub.presentation.home.mainpage.items.MainPageState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -20,6 +21,8 @@ class MainPageViewModel @Inject constructor(
 ) : ViewModel() {
   var response by mutableStateOf<Response<Boolean>>(Response.Success(false))
     private set
+  var state by mutableStateOf(MainPageState())
+    private set
 
   fun signOut() {
     repo.logout()
@@ -28,8 +31,22 @@ class MainPageViewModel @Inject constructor(
       response = repo.reloadUser()
     }
   }
-
-  fun putData() {
-
+  fun getAllUserData(){
+    viewModelScope.launch {
+      fireStoreRepo.getAllUserData().collect{
+        state = state.copy(
+          allUserData = it
+        )
+      }
+    }
+  }
+  fun getData()  {
+    viewModelScope.launch {
+      fireStoreRepo.getData(repo.currentUser?.email?.take(4).toString()).collect{
+        state = state.copy(
+          data = it
+        )
+      }
+    }
   }
 }

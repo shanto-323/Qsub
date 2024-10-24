@@ -36,9 +36,10 @@ class CreateScreenViewModel @Inject constructor(
   }
 
   private fun putData(query: String = "NoQuery") {
+    val userId = authRepo?.currentUser
     val model = DataModel(
-      id = authRepo?.currentUser?.uid.toString(),
-      name = authRepo?.currentUser?.email.toString().take(4),
+      id = userId?.uid.toString(),
+      name = userId?.email.toString().take(4),
       query = query,
       updated = false
     )
