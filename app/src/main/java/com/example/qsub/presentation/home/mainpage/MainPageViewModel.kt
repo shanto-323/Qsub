@@ -42,7 +42,7 @@ class MainPageViewModel @Inject constructor(
   }
   fun getData()  {
     viewModelScope.launch {
-      fireStoreRepo.getData(repo.currentUser?.email?.take(4).toString()).collect{
+      fireStoreRepo.getData(repo.currentUser?.email?.take(4).toString()).collect{ //Get data by name
         state = state.copy(
           data = it
         )

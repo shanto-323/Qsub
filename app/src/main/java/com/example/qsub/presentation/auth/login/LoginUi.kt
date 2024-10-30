@@ -7,9 +7,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -41,7 +43,8 @@ fun LoginUi(
   Column(
     modifier
       .fillMaxSize()
-      .background(Color.Green)
+      .background(MaterialTheme.colorScheme.primary)
+      .imePadding()
       .padding(20.dp, 10.dp),
     horizontalAlignment = Alignment.CenterHorizontally,
     verticalArrangement = Arrangement.Center
@@ -50,7 +53,8 @@ fun LoginUi(
       label = "LOGIN",
       fontSize = 32,
       fontWeight = FontWeight.ExtraBold,
-      fontStyle = FontStyle.Italic
+      fontStyle = FontStyle.Italic,
+      labelColor = MaterialTheme.colorScheme.secondary
     )
     Spacer(modifier = Modifier.padding(20.dp))
     ItemTextBox(
@@ -77,10 +81,12 @@ fun LoginUi(
       onClick = {
         viewModel.onEvent(UiEvent.EnterClicked)
       },
-      borderStroke = BorderStroke(1.dp, Color.Black),
+      borderStroke = BorderStroke(1.dp, MaterialTheme.colorScheme.secondary),
       shape = 4,
       modifier = Modifier.fillMaxWidth(0.6f),
-      label = "ENTER"
+      label = "ENTER",
+      labelColor = MaterialTheme.colorScheme.secondary,
+      containerColor = MaterialTheme.colorScheme.primary
     )
 
     Spacer(modifier = Modifier.padding(5.dp))
@@ -88,10 +94,12 @@ fun LoginUi(
       onClick = {
         navigateToSignUp()
       },
-      borderStroke = BorderStroke(1.dp, Color.Black),
+      label = "SIGN UP NOW",
+      borderStroke = BorderStroke(1.dp, MaterialTheme.colorScheme.secondary),
       shape = 4,
       modifier = Modifier.fillMaxWidth(0.6f),
-      label = "SIGN UP NOW"
+      labelColor = MaterialTheme.colorScheme.secondary,
+      containerColor = MaterialTheme.colorScheme.primary
     )
   }
 }

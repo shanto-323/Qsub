@@ -70,7 +70,11 @@ fun Navigation(
       composable(route = Constants.CREATE_SCREEN) {
         CreateScreen(
           navigate = {
-            navHostController.popBackStack()
+            navHostController.navigate(Constants.HOME_NAVIGATION){
+              popUpTo(Constants.HOME_SCREEN) {
+                inclusive = true
+              }
+            }
           }
         )
       }

@@ -44,7 +44,8 @@ class CreateScreenViewModel @Inject constructor(
       updated = false
     )
     viewModelScope.launch {
-      repo.putData(model)
+      response = Response.Loading
+      response = repo.putData(model)
     }
   }
 }

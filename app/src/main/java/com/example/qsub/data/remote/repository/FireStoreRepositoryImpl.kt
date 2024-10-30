@@ -46,6 +46,7 @@ class FireStoreRepositoryImpl @Inject constructor(
             name = data?.get("name").toString(),
             query = data?.get("query").toString(),
             updated = (data?.get("updated") as? Boolean) ?: false,
+            created = (data?.get("created") as? Long) ?: System.currentTimeMillis()
           )
           list.add(model)
         }

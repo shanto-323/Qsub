@@ -8,6 +8,7 @@ import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.runtime.Composable
@@ -46,10 +47,11 @@ fun ItemTextBox(
     },
     modifier = Modifier.then(modifier),
     colors = OutlinedTextFieldDefaults.colors(
-      focusedContainerColor = primaryColor,
-      unfocusedContainerColor = primaryColor,
-      focusedBorderColor = Color.Cyan,
-      unfocusedBorderColor = secondaryColor
+      focusedContainerColor = MaterialTheme.colorScheme.primary,
+      unfocusedContainerColor = MaterialTheme.colorScheme.primary,
+      focusedBorderColor = MaterialTheme.colorScheme.secondary,
+      unfocusedBorderColor = MaterialTheme.colorScheme.secondary,
+      cursorColor = MaterialTheme.colorScheme.secondary
     ),
     suffix = {
       if (!isPassword) {
@@ -67,7 +69,7 @@ fun ItemTextBox(
     label = {
       ItemText(
         label = label,
-        labelColor = secondaryColor,
+        labelColor = MaterialTheme.colorScheme.secondary,
         fontSize = 12,
         fontWeight = FontWeight.Bold
       )
@@ -76,7 +78,7 @@ fun ItemTextBox(
       Icon(
         imageVector = icon,
         contentDescription = label,
-        tint = secondaryColor
+        tint = MaterialTheme.colorScheme.secondary
       )
     },
     trailingIcon = {
@@ -85,14 +87,14 @@ fun ItemTextBox(
           Icon(
             imageVector = if (!passWordVisibility)Icons.Filled.Visibility else Icons.Filled.VisibilityOff,
             contentDescription = label,
-            tint = secondaryColor
+            tint = MaterialTheme.colorScheme.secondary
           )
         }
       }else {
         Icon(
           imageVector = Icons.Filled.GMobiledata,
           contentDescription = label,
-          tint = secondaryColor
+          tint = MaterialTheme.colorScheme.secondary
         )
       }
     },

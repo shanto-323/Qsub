@@ -7,9 +7,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -41,13 +43,15 @@ fun SignUpUi(
   Column(
     modifier
       .fillMaxSize()
-      .background(Color.White)
+      .background(MaterialTheme.colorScheme.primary)
+      .imePadding()
       .padding(20.dp, 10.dp),
     horizontalAlignment = Alignment.CenterHorizontally,
     verticalArrangement = Arrangement.Center
   ) {
     ItemText(
       label = "SIGN UP",
+      labelColor = MaterialTheme.colorScheme.secondary,
       fontSize = 32,
       fontWeight = FontWeight.ExtraBold,
       fontStyle = FontStyle.Italic
@@ -77,10 +81,13 @@ fun SignUpUi(
       onClick = {
         viewModel.onEvent(UiEvent.EnterClicked)
       },
-      borderStroke = BorderStroke(1.dp, Color.Black),
+
+      label = "ENTER",
+      borderStroke = BorderStroke(1.dp, MaterialTheme.colorScheme.secondary),
       shape = 4,
       modifier = Modifier.fillMaxWidth(0.6f),
-      label = "ENTER"
+      labelColor = MaterialTheme.colorScheme.secondary,
+      containerColor = MaterialTheme.colorScheme.primary
     )
 
     Spacer(modifier = Modifier.padding(5.dp))
@@ -88,10 +95,12 @@ fun SignUpUi(
       onClick = {
         navigateBack()
       },
-      borderStroke = BorderStroke(1.dp, Color.Black),
+      label = "SIGN IN NOW",
+      borderStroke = BorderStroke(1.dp, MaterialTheme.colorScheme.secondary),
       shape = 4,
       modifier = Modifier.fillMaxWidth(0.6f),
-      label = "SIGN IN NOW"
+      labelColor = MaterialTheme.colorScheme.secondary,
+      containerColor = MaterialTheme.colorScheme.primary
     )
   }
 }
